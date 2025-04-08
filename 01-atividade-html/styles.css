@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #B8C7BC;
+}
+
+img {
+    padding: 15px;
+    width: 400px;
+    border-radius: 50%;
+}
+
+p {
+    padding: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    color:#B8C7BC;
+    background-color: #38463C;
+}
+
+.texto {
+    color: #38463C;
+}
