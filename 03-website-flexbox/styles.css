@@ -117,6 +117,10 @@ footer {
         align-items: flex-start;
     }
 
+    nav img {
+        width: 30px;
+    }
+
     #menu-toggle {
         display: block;
     }
