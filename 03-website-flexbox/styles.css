@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #121212;
+    color: #f5f5f5;
+}
+
+body.dark-mode header,
+body.dark-mode footer {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+body.dark-mode nav {
+    background-color: #222;
+}
+
+body.dark-mode #menu-toggle {
+    background-color: #222;
+    color: white;
+}
+
+body.dark-mode #nav-links a {
+    color: white;
+    border-top: 1px solid #444;
+}
+
+body.dark-mode aside {
+    background-color: #2a2a2a;
+}
+
+body.dark-mode article {
+    background-color: #1a1a1a;
+}
+
+header {
+    background-color: #1abc9c;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #333;
+    justify-content: center;
+    padding: 15px;
+}
+
+nav img {
+    height: 30px;
+    cursor: pointer;
+}
+
+#menu-toggle {
+    display: none;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+#nav-links a {
+    padding: 15px;
+    text-decoration: none;
+    color: white;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+main img {
+    height: 200px;
+}
+
+aside {
+    background-color: #ddd;
+    padding: 20px;
+    flex: 30%;
+}
+
+article {
+    flex: 70%;
+    padding: 20px;
+}
+
+footer {
+    padding: 10px;
+    text-align: center;
+    background: #1abc9c;
+}
+
+/* Responsividade */
+@media screen and (max-width: 700px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #menu-toggle {
+        display: block;
+    }
+
+    #nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #nav-links a {
+        padding: 10px 15px;
+        border-top: 1px solid #444;
+    }
+
+    #nav-links.show {
+        display: flex;
+    }
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <h1>Voleibol BR</h1>
+    </header>
+    <!-- Menu Navegação -->
+    <nav>
+      <button id="menu-toggle" onClick="toggleMenu()">☰ Menu</button>
+      <div id="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Notícias</a>
+        <a href="#">Sobre</a>
+        <a href="#">Seleção</a>
+        <img src="images/moon.png" onclick="myFunction()" alt="dark-mode-icon"/>
+      </div>
+    </nav>
+    <!-- Conteúdo do site -->
+    <main>
+      <!-- Parte a esquerda na Main -->
+      <aside>
+        <h2>Sobre o esporte</h2>
+        <img src="images/r1072698_1296x729_16-9.jpg" alt="Time de Voleibol" />
+        <p>
+          O voleibol surgiu no final do século XIX nos Estados Unidos e
+          rapidamente se espalhou pelo mundo. Hoje, é praticado por milhões de
+          pessoas, tanto em ambientes recreativos quanto profissionais.
+        </p>
+        <p>
+          O Brasil é um dos países mais tradicionais no voleibol, com conquistas
+          importantes nas quadras e nas areias. Nossos atletas são referência
+          internacional.
+        </p>
+      </aside>
+      <!-- Parte a direita na Main -->
+      <article>
+        <h2>Sobre o Voleibol</h2>
+        <h5>Aprenda mais sobre o esporte</h5>
+        <img
+          src="images/beach-volleyball-6483905_1280.jpg"
+          alt="Foto Volei de Praia"
+        />
+        <p>
+          O voleibol é um esporte dinâmico e estratégico, jogado entre duas
+          equipes, com uma bola e com as mãos, em uma quadra dividida por uma
+          rede. O objetivo principal é lançar a bola por cima da rede e fazê-la
+          tocar no chão do adversário, enquanto a equipe oposta tenta impedir
+          esse movimento.
+        </p>
+        <p>
+          Cada equipe conta com seis jogadores titulares. Além do vôlei de
+          quadra, há o vôlei de praia, jogado na areia com apenas dois atletas
+          por equipe.
+        </p>
+        <p>
+          As regras do voleibol incluem a contagem de pontos, os sistemas de
+          rotação e as infrações, como dois toques ou toque apoiado. O jogo é
+          baseado em fundamentos essenciais, como saque, recepção, levantamento,
+          ataque e bloqueio, que exigem técnica e trabalho em equipe.
+        </p>
+        <p>
+          Competições importantes como a Liga das Nações, os Jogos Olímpicos e
+          os campeonatos mundiais reúnem as melhores seleções e promovem
+          disputas de alto nível.
+        </p>
+        <p>
+          No Brasil, a Superliga é o principal campeonato de clubes, revelando
+          talentos e proporcionando grandes jogos em todo o país.
+        </p>
+      </article>
+    </main>
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 - Todos os direitos reservados.</p>
+    </footer>
+    <!-- Script para o Menu Sanduiche -->
+    <script>
+      const toggleBtn = document.getElementById("menu-toggle");
+      const navLinks = document.getElementById("nav-links");
+
+      toggleBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+
+      function myFunction() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+      }
+    </script>
+  </body>
+</html>
