@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px;
+            background-color: blueviolet;
+            color: white;
+            font-weight: bold;
+        }
+
+        main {
+            display: flex;
+            flex-direction: row;
+        }
+
+        h2, h3, p, img {
+            padding: 5px;
+        }
+
+        nav {
+            background-color: #f2f2f2;
+            flex: 0 0 30%;
+            padding: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        section {
+            flex: 0 0 70%;
+            padding: 20px;
+            background-color: azure;
+        }
+
+        .minhaDiv {
+            background-color: blue;
+            height: 160px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: blueviolet;
+            color: white;
+            font-weight: bold;
+        }
+
+        @media (max-width: 400px) {
+            main {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            nav {
+                width: 100%;
+            }
+        }
+    </style>
+    <title>Questão 1</title>
+</head>
+
+<body>
+    <header>
+        <h1>Desenvolvimento de Software WEB</h1>
+    </header>
+    <main>
+        <nav>
+            <h2>[Menu Lateral]</h2>
+            <ul>
+                <li><a href="#link1"></a>Link 1</li>
+                <li><a href="#link2"></a>Link 2</li>
+                <li><a href="#link3"></a>Link 3</li>
+                <li><a href="#link4"></a>Link 4</li>
+            </ul>
+        </nav>
+        <section>
+            <h2>[Conteúdo]</h2>
+            <h3>Introdução ao HTML</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam blanditiis autem amet voluptas
+                veritatis! Est obcaecati tempore consequatur omnis voluptatibus amet, itaque ipsum numquam,
+                aspernatur
+                asperiores nihil reiciendis maxime natus.</p>
+            <div class="minhaDiv"> </div>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam blanditiis autem amet voluptas
+                veritatis! Est obcaecati tempore consequatur omnis voluptatibus amet, itaque ipsum numquam,
+                aspernatur
+                asperiores nihil reiciendis maxime natus.</p>
+            <div class="minhaDiv"> </div>
+        </section>
+    </main>
+    <footer>
+        <a href="mailto:fulanodetal@ufc.br">fulanodetal@ufc.br</a>
+        <p>2025.1</p>
+        <p>Todos os direitos reservados</p>
+    </footer>
+</body>
+
+</html>

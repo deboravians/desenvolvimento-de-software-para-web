@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            height: 200px;
+        }
+
+        #meusBotoes {
+            padding: 10px;
+        }
+
+        button {
+            background-color: blueviolet;
+        }
+    </style>
+    <title>Questão 3</title>
+</head>
+
+<body>
+    <img id="fotoPokemon"
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" />
+    <div id="meusBotoes">
+        <button onclick="voltarFoto()">Voltar (-1)</button>
+        <button onclick="adiantarFoto()">Adiantar (+1)</button>
+    </div>
+    <script>
+        let fotoAtual = 1;
+
+        function voltarFoto() {
+            const foto = document.getElementById("fotoPokemon");
+            const novoNumero = fotoAtual - 1;
+
+            if (novoNumero >= 1 && novoNumero <= 100) {
+                fotoAtual = novoNumero;
+                foto.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${fotoAtual}.svg`;
+            }
+        }
+
+        function adiantarFoto() {
+            const foto = document.getElementById("fotoPokemon");
+            const novoNumero = fotoAtual + 1;
+
+            if (novoNumero >= 1 && novoNumero <= 100) {
+                fotoAtual = novoNumero;
+                foto.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${fotoAtual}.svg`;
+            }
+        }
+    </script>
+</body>
+
+</html>
