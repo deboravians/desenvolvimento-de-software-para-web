@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alunos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th,
+        td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button,
+        a.button {
+            display: inline-block;
+            margin: 20px auto 40px auto;
+            padding: 12px 30px;
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 6px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            width: max-content;
+            user-select: none;
+        }
+
+        button:hover,
+        a.button:hover {
+            background-color: #2980b9;
+            box-shadow: 0 6px 12px rgba(41, 128, 185, 0.5);
+        }
+
+        table button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #e74c3c;
+            font-size: 14px;
+            border-radius: 4px;
+            box-shadow: none;
+            transition: background-color 0.3s ease;
+        }
+
+        table button:hover {
+            background-color: #c0392b;
+        }
+
+        #resultado-media {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .buttons-container {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tabela de Alunos</h1>
+    <div>
+        <table id="tabelaAlunos">
+            <tr>
+                <th>Nome</th>
+                <th>Curso</th>
+                <th>IRA</th>
+                <th>Ações</th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="buttons-container">
+        <a href="./cliente-api-post.html" class="button" id="button-criar-aluno">Criar Aluno</a>
+        <button id="btn-media">Calcular Média dos IRAs</button>
+    </div>
+
+    <p id="resultado-media"></p>
+
+    <script>
+        async function consumirAPI() {
+            let response = await fetch("http://localhost:3000/alunos/listar");
+            let json = await response.json();
+
+            const alunosTabela = document.getElementById("tabelaAlunos");
+            for (const aluno of json) {
+                const novaLinha = document.createElement("tr");
+                novaLinha.innerHTML = `
+                    <td>${aluno.nome}</td>
+                    <td>${aluno.curso}</td>
+                    <td>${aluno.ira}</td>
+                    <td>
+                        <a href='./cliente-api-put.html?id=${aluno.id}'>Editar</a>
+                        <button onclick='apagarAluno(${aluno.id})'>APAGAR</button>
+                    </td>
+                `;
+                alunosTabela.appendChild(novaLinha);
+            }
+        }
+
+        consumirAPI();
+
+        function apagarAluno(id) {
+            fetch(
+                `http://localhost:3000/alunos/apagar/${id}`,
+                {
+                    method: "DELETE"
+                }
+            )
+                .then(response => response.json())
+                .then(json => {
+                    console.log(json);
+                    location.reload();
+                })
+        }
+
+        document.getElementById("btn-media").onclick = function () {
+            const linhas = document.querySelectorAll("#tabelaAlunos tr:not(:first-child)");
+            let soma = 0, count = 0;
+
+            linhas.forEach(linha => {
+                const ira = parseFloat(linha.cells[2].textContent);
+                if (!isNaN(ira)) {
+                    soma += ira;
+                    count++;
+                }
+            });
+
+            const media = count > 0 ? (soma / count).toFixed(2) : 0;
+            document.getElementById("resultado-media").textContent = "Média dos IRAs: " + media;
+        }
+    </script>
+</body>
+
+</html>

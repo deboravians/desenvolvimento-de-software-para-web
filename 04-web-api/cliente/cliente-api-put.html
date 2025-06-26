@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Formulário</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        form {
+            background-color: white;
+            padding: 25px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 320px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2c3e50;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 18px;
+            border: 1.5px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px 0;
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+    <form onsubmit="editarAluno(event)">
+        <h1>Editar Aluno</h1>
+
+        <label for="nome">Nome:</label>
+        <input id="nome" type="text" name="nome" required />
+
+        <label for="curso">Curso:</label>
+        <input id="curso" type="text" name="curso" required />
+
+        <label for="ira">IRA:</label>
+        <input id="ira" type="text" name="ira" required />
+
+        <button type="submit">ATUALIZAR</button>
+    </form>
+
+    <script>
+        const params = new URLSearchParams(document.location.search.substring(1));
+        const id = params.get("id");
+
+        fetch(`http://localhost:3000/alunos/recuperar/${id}`)
+            .then(response => response.json())
+            .then(json => {
+                document.getElementById("nome").value = json.nome;
+                document.getElementById("curso").value = json.curso;
+                document.getElementById("ira").value = json.ira;
+            })
+            .catch(error => console.log(error))
+
+        async function editarAluno(event) {
+            event.preventDefault();
+
+            const nome = document.getElementById("nome").value;
+            const curso = document.getElementById("curso").value;
+            const ira = document.getElementById("ira").value;
+
+            const alunoAtualizado = { nome, curso, ira };
+
+            const response = await fetch(
+                "http://localhost:3000/alunos/atualizar/" + id,
+                {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(alunoAtualizado)
+                }
+            );
+            let json = await response.json();
+            console.log(json);
+        }
+    </script>
+</body>
+
+</html>
